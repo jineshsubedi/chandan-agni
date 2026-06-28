@@ -360,9 +360,12 @@
         <div class="container network-container">
             <div class="network-map-wrapper glass-panel">
                 <svg class="nepal-mesh-map" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Abstract outline shape of Nepal -->
+                    <path class="nepal-border-outline" d="M 80,190 C 100,160 150,135 220,140 C 300,145 380,165 460,175 C 540,185 620,200 720,225 C 730,235 735,245 725,255 C 690,265 650,260 610,255 C 570,250 510,270 440,280 C 380,290 320,260 260,245 C 200,230 140,215 80,190 Z" />
+                    
                     <!-- Background mesh/grid lines to symbolize connectivity -->
-                    <path class="map-mesh-lines" d="M150,180 L320,240 L440,280 L450,220 L680,250 M150,180 L450,220 M320,240 L450,220 L680,250" stroke="rgba(255, 77, 0, 0.15)" stroke-width="1.5" stroke-dasharray="8 6" fill="none" />
-                    <path class="map-mesh-flow" d="M100,200 C200,120 300,140 400,180 C500,220 600,150 700,220" stroke="rgba(200, 16, 46, 0.1)" stroke-width="2" fill="none" />
+                    <path class="map-mesh-lines" d="M150,180 L320,240 L440,280 L450,220 L680,250 M150,180 L450,220 M320,240 L450,220 L680,250" stroke="rgba(255, 77, 0, 0.12)" stroke-width="1.5" stroke-dasharray="8 6" fill="none" />
+                    <path class="map-mesh-flow" d="M100,200 C200,120 300,140 400,180 C500,220 600,150 700,220" stroke="rgba(200, 16, 46, 0.08)" stroke-width="2" fill="none" />
                     
                     <!-- Kohalpur Node -->
                     <g class="map-node" data-city="kohalpur" transform="translate(150, 180)">
