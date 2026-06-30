@@ -968,6 +968,8 @@ nav {
     padding: 60px 0 100px 0;
     cursor: default;
     scrollbar-width: none;
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
 }
 
 .infographic-scroll-wrapper:active {
@@ -1890,7 +1892,7 @@ footer {
 
 .footer-grid {
     display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+    grid-template-columns: 1.5fr 1fr 1.2fr;
     gap: 60px;
     margin-bottom: 60px;
 }
@@ -1917,7 +1919,7 @@ footer {
     align-items: center;
     justify-content: center;
     transition: var(--transition-quick);
-    color: var(--text-secondary);
+    color: var(--text-primary);
 }
 
 .social-icon:hover, .btn-outline:hover {
