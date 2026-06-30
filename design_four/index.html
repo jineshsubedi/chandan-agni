@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agni Group | Moving Nepal Forward</title>
+    <!-- Fonts: Minimalist 'Outfit' -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <!-- Header / Navigation -->
+    <header class="header">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <img src="../assets/agni-logo.svg" alt="Agni Group" class="logo-img">
+                <span class="logo-text">AGNI GROUP</span>
+            </a>
+            
+            <nav class="nav-menu">
+                <ul class="nav-links">
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#companies" class="nav-link">Companies</a></li>
+                    <li><a href="#network" class="nav-link">Network</a></li>
+                    <li><a href="#stories" class="nav-link">Foundation</a></li>
+                </ul>
+            </nav>
+
+            <div class="nav-actions">
+                <button class="btn-theme-toggle" id="theme-toggle" aria-label="Toggle Theme">
+                    <i data-lucide="moon" class="icon-moon"></i>
+                    <i data-lucide="sun" class="icon-sun"></i>
+                </button>
+                <button class="btn-primary">Online Payment</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Slider -->
+    <section class="hero-slider" id="home">
+        <!-- Slide 1: Automotive -->
+        <div class="slide active">
+            <div class="slide-bg">
+                <img src="../assets/agni_incorporate_banner_1782754333375.png" alt="Agni Incorporate">
+            </div>
+            <div class="slide-content container">
+                <span class="slide-tag">Agni Incorporate</span>
+                <h1 class="slide-title">Driving Nepal's<br>Mobility.</h1>
+                <p class="slide-desc">Authorized distributor of Mahindra passenger and commercial vehicles, leading the automotive revolution since 1991.</p>
+                <a href="#companies" class="btn-secondary">Explore Automotive</a>
+            </div>
+        </div>
+
+        <!-- Slide 2: EVs -->
+        <div class="slide">
+            <div class="slide-bg">
+                <img src="../assets/ev_future.png" alt="Electric Vehicles" onerror="this.src='../assets/futuristic_ev_1782837662483.png'">
+            </div>
+            <div class="slide-content container">
+                <span class="slide-tag">Agni EV Division</span>
+                <h1 class="slide-title">The Electric<br>Future.</h1>
+                <p class="slide-desc">Pioneering green technology and sustainable mobility solutions across the nation with Mahindra EVs.</p>
+                <a href="#companies" class="btn-secondary">Explore EVs</a>
+            </div>
+        </div>
+
+        <!-- Slide 3: Logistics -->
+        <div class="slide">
+            <div class="slide-bg">
+                <img src="../assets/logistics_banner_1782754382855.png" alt="Agni Logistics">
+            </div>
+            <div class="slide-content container">
+                <span class="slide-tag">Agni Logistics</span>
+                <h1 class="slide-title">Seamless Supply<br>Chains.</h1>
+                <p class="slide-desc">Comprehensive supply chain management, cargo transportation, and modern warehousing facilities.</p>
+                <a href="#companies" class="btn-secondary">Explore Logistics</a>
+            </div>
+        </div>
+
+        <!-- Slider Controls -->
+        <div class="slider-controls container">
+            <div class="slider-dots"></div>
+            <div class="slider-arrows">
+                <button class="slider-btn prev"><i data-lucide="arrow-left"></i></button>
+                <button class="slider-btn next"><i data-lucide="arrow-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section pt-120 pb-120" id="about">
+        <div class="container about-grid">
+            <div class="about-text reveal-up">
+                <span class="section-tag">Who We Are</span>
+                <h2 class="section-title">Commanding. Confident.<br>Bright. Warm.</h2>
+                <p class="section-desc">Agni Group is a symbol of trust, progress, and unwavering commitment in Nepal. From pioneers in utility vehicles to leaders in logistics and clean energy solutions, our mission remains focused: to fuel progress, empower communities, and build a stronger nation.</p>
+                
+                <div class="core-values">
+                    <div class="value-item">
+                        <i data-lucide="heart-handshake"></i>
+                        <span>Customer Delight</span>
+                    </div>
+                    <div class="value-item">
+                        <i data-lucide="zap"></i>
+                        <span>Unmatched Zeal</span>
+                    </div>
+                    <div class="value-item">
+                        <i data-lucide="award"></i>
+                        <span>Professional Calibre</span>
+                    </div>
+                </div>
+            </div>
+            <div class="about-image reveal-up delay-1">
+                <img src="../assets/about_img.png" alt="Agni Headquarters">
+                <div class="experience-card">
+                    <h3>30+</h3>
+                    <p>Years of Legacy</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Companies Section -->
+    <section class="section bg-alt pt-120 pb-120" id="companies">
+        <div class="container">
+            <div class="section-header text-center reveal-up">
+                <span class="section-tag">Our Ecosystem</span>
+                <h2 class="section-title">Group Companies</h2>
+                <p class="section-desc mx-auto">A diversified conglomerate of market leaders, unified by the spirit of quality service.</p>
+            </div>
+
+            <div class="companies-grid mt-60">
+                <!-- Company Card 1 -->
+                <div class="company-card reveal-up">
+                    <div class="card-icon"><i data-lucide="car"></i></div>
+                    <h3>Agni Incorporate</h3>
+                    <p>Authorized distributor of Mahindra Passenger Vehicles, SUVs, Pickups, and farm tractors in Nepal.</p>
+                </div>
+                
+                <!-- Company Card 2 -->
+                <div class="company-card reveal-up delay-1">
+                    <div class="card-icon"><i data-lucide="bike"></i></div>
+                    <h3>Agni Moto Inc.</h3>
+                    <p>Distributor of Mahindra two-wheelers, electric three-wheelers, and Powerol generators.</p>
+                </div>
+
+                <!-- Company Card 3 -->
+                <div class="company-card reveal-up delay-2">
+                    <div class="card-icon"><i data-lucide="battery-charging"></i></div>
+                    <h3>Agni Energy</h3>
+                    <p>Specialized division focused on sustainable energy solutions and green technologies.</p>
+                </div>
+
+                <!-- Company Card 4 -->
+                <div class="company-card reveal-up">
+                    <div class="card-icon"><i data-lucide="truck"></i></div>
+                    <h3>Agni Logistics</h3>
+                    <p>Comprehensive supply chain management, cargo transportation, and modern warehousing.</p>
+                </div>
+
+                <!-- Company Card 5 -->
+                <div class="company-card reveal-up delay-1">
+                    <div class="card-icon"><i data-lucide="wrench"></i></div>
+                    <h3>Balaju Auto Works</h3>
+                    <p>State-of-the-art diagnostic service centers and after-sales support systems.</p>
+                </div>
+
+                <!-- Company Card 6 -->
+                <div class="company-card reveal-up delay-2">
+                    <div class="card-icon"><i data-lucide="landmark"></i></div>
+                    <h3>Hire Purchase</h3>
+                    <p>Custom-tailored financial assistance and vehicle financing solutions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Network Section -->
+    <section class="section pt-120 pb-120" id="network">
+        <div class="container network-grid">
+            <div class="network-info reveal-up">
+                <span class="section-tag">Our Reach</span>
+                <h2 class="section-title">Nationwide Presence</h2>
+                <p class="section-desc">Comprising of 80 plus dealers and branches across the country, Agni Group ensures that premium mobility and services are accessible in every province.</p>
+                
+                <ul class="regional-list mt-40">
+                    <li><i data-lucide="map-pin"></i> Kathmandu (Corporate HQ)</li>
+                    <li><i data-lucide="map-pin"></i> Kohalpur</li>
+                    <li><i data-lucide="map-pin"></i> Birgunj</li>
+                    <li><i data-lucide="map-pin"></i> Bhairahawa</li>
+                    <li><i data-lucide="map-pin"></i> Itahari</li>
+                </ul>
+            </div>
+            <div class="network-map reveal-up delay-1">
+                <!-- Abstract minimalist Nepal map using SVG -->
+                <svg viewBox="0 0 800 400" class="nepal-map">
+                    <path class="map-outline" d="M 80,190 C 100,160 150,135 220,140 C 300,145 380,165 460,175 C 540,185 620,200 720,225 C 730,235 735,245 725,255 C 690,265 650,260 610,255 C 570,250 510,270 440,280 C 380,290 320,260 260,245 C 200,230 140,215 80,190 Z" />
+                    <!-- Nodes -->
+                    <circle cx="150" cy="180" r="8" class="map-node" />
+                    <circle cx="320" cy="240" r="8" class="map-node" />
+                    <circle cx="440" cy="280" r="8" class="map-node" />
+                    <circle cx="490" cy="210" r="12" class="map-node active" />
+                    <circle cx="680" cy="250" r="8" class="map-node" />
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- CSR / Foundation Section -->
+    <section class="section bg-alt pt-120 pb-120" id="stories">
+        <div class="container">
+            <div class="section-header text-center reveal-up">
+                <span class="section-tag">Aastha Foundation</span>
+                <h2 class="section-title">Spirit to the Top of the World</h2>
+                <p class="section-desc mx-auto">Upholding community pride and honoring extreme limits of human endurance.</p>
+            </div>
+
+            <div class="csr-grid mt-60">
+                <div class="csr-card reveal-up">
+                    <div class="csr-img">
+                        <img src="https://www.agnigroup.com.np/images/everest/kabita-nepali-3.jpg" alt="Kabita Nepali">
+                    </div>
+                    <div class="csr-content">
+                        <h3>Kabita Nepali</h3>
+                        <p>Heroic double-summit of Mt. Everest and Mt. Lhotse back-to-back, proudly supported by Agni Group.</p>
+                    </div>
+                </div>
+                
+                <div class="csr-card reveal-up delay-1">
+                    <div class="csr-img">
+                        <img src="https://www.agnigroup.com.np/images/everest/nisha-adhikari-2.jpg" alt="Nisha Adhikari">
+                    </div>
+                    <div class="csr-content">
+                        <h3>Nisha Adhikari</h3>
+                        <p>Standing on the roof of the world representing Agni and Mahindra's unstoppable spirit.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Global Partners -->
+    <section class="section pt-120 pb-120 border-bottom">
+        <div class="container text-center reveal-up">
+            <h3 class="mb-40" style="color: var(--text-muted); font-weight: 500;">Global Partners & Affiliations</h3>
+            <div class="partners-grid">
+                <div class="partner-item">MAHINDRA</div>
+                <div class="partner-item">POWEROL</div>
+                <div class="partner-item">TREO</div>
+                <div class="partner-item">SANGYONG</div>
+                <div class="partner-item">BE6</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <img src="../assets/agni-logo.svg" alt="Agni Group" class="footer-logo">
+                <p>Empowering people, enriching lives, and contributing to Nepal's industrial development.</p>
+                <div class="social-links mt-40">
+                    <a href="#"><i data-lucide="facebook"></i></a>
+                    <a href="#"><i data-lucide="twitter"></i></a>
+                    <a href="#"><i data-lucide="instagram"></i></a>
+                    <a href="#"><i data-lucide="linkedin"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-links">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#about">Who We Are</a></li>
+                    <li><a href="#">Our Story</a></li>
+                    <li><a href="#companies">Group Companies</a></li>
+                    <li><a href="#">Careers</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h4>Information</h4>
+                <ul>
+                    <li><a href="#network">Network & Branches</a></li>
+                    <li><a href="#">Media & News</a></li>
+                    <li><a href="#">Online Payment</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-contact">
+                <h4>Contact Us</h4>
+                <ul>
+                    <li>Agni Corporate House</li>
+                    <li>Panipokhari, Kathmandu, Nepal</li>
+                    <li>+977-1-4414607</li>
+                    <li>info@agnigroup.com.np</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="container footer-bottom">
+            <p>&copy; 2026 Agni Group Nepal. All rights reserved.</p>
+            <div class="legal">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="app.js"></script>
+</body>
+</html>

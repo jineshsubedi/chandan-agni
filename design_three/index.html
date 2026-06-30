@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agni Group | Neon & Dark Tech</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Syne:wght@500;700;800&display=swap" rel="stylesheet">
+    <link href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700&display=swap" rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="dark-theme">
+    <!-- Subtle Background Glow Effects -->
+    <div class="bg-glow glow-orange"></div>
+    <div class="bg-glow glow-red"></div>
+
+    <!-- Floating Glassmorphic Navbar -->
+    <header class="floating-nav-container">
+        <nav class="floating-nav glass-panel">
+            <a href="#" class="logo">
+                <img src="../assets/agni-logo.svg" alt="Agni Group" class="logo-img" style="filter: invert(1);">
+            </a>
+            <ul class="nav-links">
+                <li><a href="#about" class="nav-link">Vision</a></li>
+                <li><a href="#ecosystem" class="nav-link">Ecosystem</a></li>
+                <li><a href="#network" class="nav-link">Network</a></li>
+                <li><a href="#impact" class="nav-link">Impact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="btn-neon">
+                    <span>Pay Online</span>
+                    <div class="btn-glow"></div>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Bento Grid Layout -->
+    <main class="container">
+        <div class="bento-grid">
+            
+            <!-- Hero Bento Box (Large) -->
+            <div class="bento-item hero-box glass-panel col-span-2 row-span-2 hover-glow">
+                <div class="hero-content">
+                    <span class="badge neon-badge">Pioneering Mobility</span>
+                    <h1 class="hero-title">Driving Nepal's <br><span class="text-gradient">Future.</span></h1>
+                    <p class="hero-desc">Over 30 years of trust, empowering communities with premium mobility and sustainable energy solutions across the nation.</p>
+                    <a href="#ecosystem" class="btn-primary-neon mt-6">
+                        Explore Ecosystem <i data-lucide="arrow-up-right"></i>
+                    </a>
+                </div>
+                <div class="hero-image-wrapper">
+                    <!-- Overlaying the logo or a 3D asset if we had one. Let's use the new EV image as background for the hero or a distinct box -->
+                    <img src="../assets/ev_future.png" alt="Futuristic EV" class="floating-asset" onerror="this.src='../assets/futuristic_ev_1782837662483.png'">
+                </div>
+            </div>
+
+            <!-- Stats Box -->
+            <div class="bento-item stat-box glass-panel hover-glow">
+                <div class="stat-icon"><i data-lucide="award"></i></div>
+                <div class="stat-number"><span class="counter" data-target="30">0</span>+</div>
+                <div class="stat-label">Years of Legacy</div>
+            </div>
+
+            <div class="bento-item stat-box glass-panel hover-glow">
+                <div class="stat-icon"><i data-lucide="map"></i></div>
+                <div class="stat-number"><span class="counter" data-target="80">0</span>+</div>
+                <div class="stat-label">Nationwide Branches</div>
+            </div>
+
+            <!-- Incorporate & Moto Inc (Medium Box) -->
+            <div class="bento-item image-box glass-panel col-span-2 hover-glow">
+                <div class="bg-image" style="background-image: url('../assets/futuristic_ev_1782837662483.png');"></div>
+                <div class="content-overlay">
+                    <div class="flex-between">
+                        <h3>Agni Incorporate & Moto Inc.</h3>
+                        <i data-lucide="zap"></i>
+                    </div>
+                    <p>Leading the automotive revolution with high-performance EVs and commercial vehicles.</p>
+                </div>
+            </div>
+
+            <!-- Energy & Logistics (Medium Box) -->
+            <div class="bento-item image-box glass-panel col-span-2 hover-glow">
+                <div class="bg-image" style="background-image: url('../assets/neon_abstract_energy_1782837672936.png');"></div>
+                <div class="content-overlay">
+                    <div class="flex-between">
+                        <h3>Agni Energy & Logistics</h3>
+                        <i data-lucide="battery-charging"></i>
+                    </div>
+                    <p>Clean energy solutions and seamless nationwide supply chain management.</p>
+                </div>
+            </div>
+
+            <!-- Companies List Box -->
+            <div class="bento-item list-box glass-panel hover-glow">
+                <h3>Our Ecosystem</h3>
+                <ul class="neon-list">
+                    <li><i data-lucide="car"></i> Agni Incorporate</li>
+                    <li><i data-lucide="bike"></i> Agni Moto Inc.</li>
+                    <li><i data-lucide="zap"></i> Agni Energy</li>
+                    <li><i data-lucide="truck"></i> Agni Logistics</li>
+                    <li><i data-lucide="wrench"></i> Balaju Auto Works</li>
+                    <li><i data-lucide="landmark"></i> Hire Purchase</li>
+                </ul>
+            </div>
+
+            <!-- Interactive Map Trigger Box -->
+            <div class="bento-item map-box glass-panel hover-glow">
+                <div class="map-bg">
+                    <i data-lucide="globe-2" class="huge-icon"></i>
+                </div>
+                <div class="content-overlay">
+                    <h3>Nationwide Presence</h3>
+                    <p>Explore our 80+ branches</p>
+                    <button class="btn-icon mt-4"><i data-lucide="arrow-up-right"></i></button>
+                </div>
+            </div>
+
+            <!-- CSR Impact Box -->
+            <div class="bento-item csr-box glass-panel col-span-2 hover-glow">
+                <div class="bg-image" style="background-image: url('../assets/aastha_banner_1782754432091.png'); opacity: 0.4;"></div>
+                <div class="content-overlay flex-row">
+                    <div class="csr-text">
+                        <span class="badge neon-badge">CSR & Impact</span>
+                        <h3>Aastha Foundation</h3>
+                        <p>Empowering communities, supporting education, and honoring the extreme limits of human endurance.</p>
+                    </div>
+                    <div class="csr-stats">
+                        <div class="stat-mini">
+                            <i data-lucide="heart"></i>
+                            <span>Community First</span>
+                        </div>
+                        <div class="stat-mini">
+                            <i data-lucide="mountain"></i>
+                            <span>Everest Summits</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </main>
+
+    <!-- Footer Minimal -->
+    <footer class="minimal-footer container">
+        <div class="footer-content glass-panel">
+            <div class="footer-brand">
+                <img src="../assets/agni-logo.svg" alt="Agni Group" style="filter: invert(1); width: 120px;">
+                <p class="text-sm mt-4 text-muted">© 2026 Agni Group Nepal. All rights reserved.</p>
+            </div>
+            <div class="social-links-neon">
+                <a href="#" class="hover-glow-icon"><i data-lucide="facebook"></i></a>
+                <a href="#" class="hover-glow-icon"><i data-lucide="twitter"></i></a>
+                <a href="#" class="hover-glow-icon"><i data-lucide="instagram"></i></a>
+                <a href="#" class="hover-glow-icon"><i data-lucide="linkedin"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="app.js"></script>
+</body>
+</html>
