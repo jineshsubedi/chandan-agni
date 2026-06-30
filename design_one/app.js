@@ -466,24 +466,29 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 2500);
     });
 
-    // 8. 3D Card Hover Effect for Companies
-    const cards = document.querySelectorAll('.company-card');
-    cards.forEach(card => {
-        card.addEventListener('mousemove', (e) => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-
-            const xRotation = ((y - rect.height / 2) / (rect.height / 2)) * 6; // max 6 deg
-            const yRotation = -((x - rect.width / 2) / (rect.width / 2)) * 6;
-
-            card.style.transform = `perspective(1000px) rotateX(${xRotation}deg) rotateY(${yRotation}deg) translateY(-8px)`;
-        });
-
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0)';
+    // 8. Interactive Accordion for Companies
+    const accordionItems = document.querySelectorAll('.accordion-item');
+    accordionItems.forEach(item => {
+        item.addEventListener('mouseenter', () => {
+            accordionItems.forEach(acc => acc.classList.remove('active'));
+            item.classList.add('active');
         });
     });
+
+    // 10. Scroll Parallax Effect
+    const parallaxNodes = document.querySelectorAll('[data-parallax]');
+    if (parallaxNodes.length > 0) {
+        window.addEventListener('scroll', () => {
+            const scrollY = window.pageYOffset;
+            parallaxNodes.forEach(el => {
+                const speed = parseFloat(el.getAttribute('data-parallax')) || 0.05;
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    el.style.transform = `translateY(${-(scrollY * speed)}px)`;
+                }
+            });
+        });
+    }
 
     // 9. Mobile Menu Toggle Action
     const mobileToggle = document.getElementById('mobile-toggle');
@@ -504,4 +509,108 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+
+    // 11. Leaflet Interactive Map
+    const mapElement = document.getElementById('leaflet-map');
+    if (mapElement && typeof L !== 'undefined') {
+        const map = L.map('leaflet-map').setView([28.3949, 84.1240], 6); // Centered on Nepal
+
+        // Determine if light or dark theme based on html data-theme
+        const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+        const tileUrl = isLight ? 
+            'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png' : 
+            'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png';
+
+        L.tileLayer(tileUrl, {
+            attribution: '&copy; OpenStreetMap contributors &copy; CARTO'
+        }).addTo(map);
+
+        const mapData = [
+            { city: 'Kathmandu', type: 'Agni Corporate HQ', lat: 27.7172, lng: 85.3240, address: 'Panipokhari, Kathmandu', dealers: '18 Dedicated Branches & Showrooms', services: 'Full Sales, Spares, and Balaju Auto Works HQ' },
+            { city: 'Kohalpur', type: 'Regional Branch', lat: 28.1873, lng: 81.7169, address: 'Main Highway, Kohalpur', dealers: '4 Dedicated Branches', services: 'Sales and Service Support' },
+            { city: 'Birgunj', type: 'Regional Branch', lat: 27.0135, lng: 84.8778, address: 'Link Road, Birgunj', dealers: '6 Dedicated Branches', services: 'Sales, Spares, Service' },
+            { city: 'Itahari', type: 'Regional Branch', lat: 26.6646, lng: 87.2718, address: 'Highway Area, Itahari', dealers: '5 Dedicated Branches', services: 'Sales and Service' },
+            { city: 'Bhairahawa', type: 'Regional Branch', lat: 27.5065, lng: 83.4496, address: 'Lumbini Road, Bhairahawa', dealers: '3 Dedicated Branches', services: 'Sales and Service' }
+        ];
+
+        // Custom icon
+        const agniIcon = L.divIcon({
+            html: `<div style="background-color: var(--brand-orange); width: 16px; height: 16px; border-radius: 50%; border: 3px solid #fff; box-shadow: 0 0 10px rgba(255, 77, 0, 0.8);"></div>`,
+            className: 'agni-map-marker',
+            iconSize: [22, 22],
+            iconAnchor: [11, 11]
+        });
+
+        const netCity = document.getElementById('net-city');
+        const netOffice = document.getElementById('net-office');
+        const netAddress = document.getElementById('net-address');
+        const netDealers = document.getElementById('net-dealers');
+        const netServices = document.getElementById('net-services');
+
+        mapData.forEach(loc => {
+            const marker = L.marker([loc.lat, loc.lng], { icon: agniIcon }).addTo(map);
+            marker.on('click', () => {
+                netCity.textContent = loc.city;
+                netOffice.textContent = loc.type;
+                netAddress.textContent = loc.address;
+                netDealers.textContent = loc.dealers;
+                netServices.textContent = loc.services;
+                map.flyTo([loc.lat, loc.lng], 9, { animate: true, duration: 1.5 });
+            });
+        });
+
+        // Handle Theme Toggle for Map
+        document.getElementById('theme-toggle').addEventListener('click', () => {
+            setTimeout(() => {
+                const newIsLight = document.documentElement.getAttribute('data-theme') === 'light';
+                const newTileUrl = newIsLight ? 
+                    'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png' : 
+                    'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png';
+                L.tileLayer(newTileUrl, {
+                    attribution: '&copy; OpenStreetMap contributors &copy; CARTO'
+                }).addTo(map);
+            }, 100);
+        });
+    }
+
+    // 12. Infinite Auto-Scroll for Timeline Infographic
+    const timelineSlider = document.getElementById('timeline-scroll');
+    if (timelineSlider) {
+        const track = timelineSlider.querySelector('.infographic-track');
+        if (track) {
+            const nodes = track.querySelectorAll('.info-node');
+            nodes.forEach(node => {
+                const clone = node.cloneNode(true);
+                const currentLeft = parseInt(clone.style.left || 0, 10);
+                clone.style.left = (currentLeft + 2600) + 'px';
+                track.appendChild(clone);
+            });
+
+            const trackLine = track.querySelector('.track-line');
+            if (trackLine) trackLine.style.width = '6000px';
+            
+            const paddingDiv = track.querySelector('div[style*="width: 2500px"]');
+            if (paddingDiv) paddingDiv.style.width = '5200px';
+        }
+
+        let isHovered = false;
+
+        timelineSlider.addEventListener('mouseenter', () => isHovered = true);
+        timelineSlider.addEventListener('mouseleave', () => isHovered = false);
+        timelineSlider.addEventListener('touchstart', () => isHovered = true);
+        timelineSlider.addEventListener('touchend', () => isHovered = false);
+
+        function autoScroll() {
+            if (!isHovered) {
+                timelineSlider.scrollLeft += 1;
+                if (timelineSlider.scrollLeft >= 2600) {
+                    timelineSlider.scrollLeft = 0;
+                }
+            }
+            requestAnimationFrame(autoScroll);
+        }
+        autoScroll();
+    }
+
+
 });

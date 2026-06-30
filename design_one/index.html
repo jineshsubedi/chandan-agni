@@ -5,8 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agni Group Nepal | Unleashing Possibilities</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;0,900;1,600&display=swap" rel="stylesheet">
     <!-- CSS Link -->
     <link rel="stylesheet" href="style.css">
+    <!-- Leaflet Map CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <!-- Lucide Icons CDN -->
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
@@ -50,6 +57,10 @@
                     <li class="nav-item"><a href="#network" class="nav-link">Location</a></li>
                 </ul>
                 <div class="nav-cta">
+                    <button class="btn-icon" id="theme-toggle" aria-label="Toggle Theme">
+                        <i data-lucide="sun" class="sun-icon" style="display: none; width: 18px; height: 18px;"></i>
+                        <i data-lucide="moon" class="moon-icon" style="width: 18px; height: 18px;"></i>
+                    </button>
                     <button class="btn-nav-pay trigger-payment">Online Payment</button>
                 </div>
             </nav>
@@ -290,7 +301,7 @@
                 </div>
             </div>
 
-            <div class="about-right">
+            <div class="about-right" data-parallax="0.05">
                 <div class="about-img-frame">
                     <img src="../assets/about_img.png" alt="Agni Group HQ Interior Showcase">
                 </div>
@@ -302,44 +313,91 @@
         </div>
     </section>
 
-    <!-- Milestones/Timeline Section -->
-    <section id="milestones" class="section-padding milestones-section reveal">
-        <div class="container">
-            <div class="section-header">
+    <!-- Infographic Timeline Section -->
+    <section id="milestones" class="section-padding timeline-infographic reveal">
+        <div class="container" style="max-width: 100%; padding: 0;">
+            <div class="section-header" style="padding: 0 5%;">
                 <h2>Our Story &amp; Milestones</h2>
                 <p>Over three decades of driving Nepal's mobility landscape forward.</p>
+                <div class="drag-hint"><i data-lucide="mouse" style="width:16px; height:16px; margin-right:8px;"></i> Scroll to Explore</div>
             </div>
 
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-dot">1991</div>
-                    <div class="timeline-content">
-                        <h3>Foundation</h3>
-                        <p>Established operations as the authorized distributor of Mahindra utility vehicles and
-                            tractors in Nepal.</p>
+            <div class="infographic-scroll-wrapper" id="timeline-scroll">
+                <div class="infographic-track">
+                    <!-- Central Line -->
+                    <div class="track-line"></div>
+
+                    <!-- Item 1: Foundation -->
+                    <div class="info-node align-bottom" style="left: 0;">
+                        <div class="info-year">1991</div>
+                        <div class="info-connector"></div>
+                        <div class="info-card glass-panel">
+                            <h3>Foundation</h3>
+                            <p>Authorized distributor of Mahindra utility vehicles in Nepal.</p>
+                        </div>
                     </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot">2018</div>
-                    <div class="timeline-content">
-                        <h3>Agni Logistics</h3>
-                        <p>Launched supply chain, warehousing, and transportation services to streamline nationwide
-                            distribution.</p>
+
+                    <!-- Item 2: Big Stat -->
+                    <div class="info-node align-top" style="left: 350px;">
+                        <div class="info-stat-block">
+                            <span class="stat-big text-gradient-fire">30+</span>
+                            <span class="stat-sub">YEARS OF<br>TRUST</span>
+                        </div>
+                        <div class="info-connector"></div>
+                        <div class="info-year">2000</div>
                     </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot">2023</div>
-                    <div class="timeline-content">
-                        <h3>Next-Gen SUVs</h3>
-                        <p>Introduced the premium Mahindra Scorpio-N and XUV700, redefining modern SUVs in Nepal.</p>
+
+                    <!-- Item 3: Tractor -->
+                    <div class="info-node align-bottom" style="left: 650px;">
+                        <div class="info-year">2005</div>
+                        <div class="info-connector"></div>
+                        <div class="speech-bubble bottom">
+                            <h3>Agricultural Growth</h3>
+                            <p>Leading the mechanization of agriculture across Nepal.</p>
+                        </div>
+                        <div class="info-image-wrapper absolute-top-right">
+                            <img src="../assets/timeline_tractor_cutout_1782842305556.png" alt="Tractor Cutout" class="info-img-cutout">
+                        </div>
                     </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot">2025</div>
-                    <div class="timeline-content">
-                        <h3>Electric Future</h3>
-                        <p>Announced rollout of Mahindra BE6 and XEV9e electric SUVs, leading Nepal's EV transition.</p>
+
+                    <!-- Item 4: Executive -->
+                    <div class="info-node align-top" style="left: 1100px;">
+                        <div class="info-image-wrapper absolute-bottom-left">
+                            <img src="../assets/timeline_executive_portrait_1782842323208.png" alt="Executive Portrait" class="info-img-cutout portrait">
+                        </div>
+                        <div class="speech-bubble top">
+                            <h3>Balaju Auto Works</h3>
+                            <p>State-of-the-art service network established for unmatched after-sales support.</p>
+                        </div>
+                        <div class="info-connector"></div>
+                        <div class="info-year">2010</div>
                     </div>
+
+                    <!-- Item 5: SUV -->
+                    <div class="info-node align-bottom" style="left: 1600px;">
+                        <div class="info-year">2023</div>
+                        <div class="info-connector"></div>
+                        <div class="speech-bubble bottom">
+                            <h3>Next-Gen SUVs</h3>
+                            <p>Introduction of the premium Mahindra Scorpio-N and XUV700.</p>
+                        </div>
+                        <div class="info-image-wrapper absolute-top-right">
+                            <img src="../assets/timeline_suv_cutout_1782842294208.png" alt="SUV Cutout" class="info-img-cutout">
+                        </div>
+                    </div>
+
+                    <!-- Item 6: Future -->
+                    <div class="info-node align-top" style="left: 2100px;">
+                        <div class="info-card alt-style glass-panel">
+                            <h3 class="text-gradient-fire">Electric Transition</h3>
+                            <p>Rollout of Mahindra BE6 and XEV9e electric SUVs.</p>
+                        </div>
+                        <div class="info-connector"></div>
+                        <div class="info-year">2025</div>
+                    </div>
+
+                    <!-- Padding for end of scroll -->
+                    <div style="width: 2500px; height: 1px;"></div>
                 </div>
             </div>
         </div>
@@ -353,106 +411,102 @@
                 <p>A diversified conglomerate of market leaders, unified by the spirit of quality service.</p>
             </div>
 
-            <div class="companies-grid">
-                <div class="company-card glass-panel">
-                    <div class="company-card-glow"></div>
-                    <div class="company-card-bg"></div>
-                    <div class="company-card-content">
-                        <div>
-                            <div class="company-icon">
-                                <i data-lucide="car" style="width: 28px; height: 28px;"></i>
-                            </div>
-                            <h3 class="company-title">Agni Incorporated</h3>
-                            <p class="company-desc">Authorized distributor of Mahindra Passenger Vehicles, SUVs,
-                                Pickups, and farm tractors in Nepal.</p>
-                        </div>
-                        <a href="#" class="company-link">Explore Vehicles <i data-lucide="arrow-right"
-                                style="width: 16px; height: 16px;"></i></a>
+            <div class="companies-accordion">
+                <div class="accordion-item active" style="background-image: url('../assets/agni_incorporate_banner_1782754333375.png');">
+                    <div class="accordion-overlay"></div>
+                    <div class="accordion-content">
+                        <div class="company-icon"><i data-lucide="car"></i></div>
+                        <h3 class="company-title">Agni Incorporated</h3>
+                        <p class="company-desc">Authorized distributor of Mahindra Passenger Vehicles, SUVs, Pickups, and farm tractors in Nepal.</p>
+                        <a href="#" class="company-link">Explore Vehicles <i data-lucide="arrow-right"></i></a>
                     </div>
                 </div>
-
-                <div class="company-card glass-panel">
-                    <div class="company-card-glow"></div>
-                    <div class="company-card-bg"></div>
-                    <div class="company-card-content">
-                        <div>
-                            <div class="company-icon">
-                                <i data-lucide="bike" style="width: 28px; height: 28px;"></i>
-                            </div>
-                            <h3 class="company-title">Agni Moto Inc.</h3>
-                            <p class="company-desc">Distributor of Mahindra two-wheelers, clean electric three-wheelers,
-                                and high-performance Powerol generators.</p>
-                        </div>
-                        <a href="#" class="company-link">Explore Power &amp; Bikes <i data-lucide="arrow-right"
-                                style="width: 16px; height: 16px;"></i></a>
+                <div class="accordion-item" style="background-image: url('../assets/motoinc_banner_1782754347729.png');">
+                    <div class="accordion-overlay"></div>
+                    <div class="accordion-content">
+                        <div class="company-icon"><i data-lucide="bike"></i></div>
+                        <h3 class="company-title">Agni Moto Inc.</h3>
+                        <p class="company-desc">Distributor of Mahindra two-wheelers, electric three-wheelers, and Powerol generators.</p>
+                        <a href="#" class="company-link">Explore Power &amp; Bikes <i data-lucide="arrow-right"></i></a>
                     </div>
                 </div>
-
-                <div class="company-card glass-panel">
-                    <div class="company-card-glow"></div>
-                    <div class="company-card-bg"></div>
-                    <div class="company-card-content">
-                        <div>
-                            <div class="company-icon">
-                                <i data-lucide="battery-charging" style="width: 28px; height: 28px;"></i>
-                            </div>
-                            <h3 class="company-title">Agni Energy</h3>
-                            <p class="company-desc">Specialized division focused on sustainable energy solutions, smart
-                                power backups, and green technologies.</p>
-                        </div>
-                        <a href="#" class="company-link">Sustainable Solutions <i data-lucide="arrow-right"
-                                style="width: 16px; height: 16px;"></i></a>
+                <div class="accordion-item" style="background-image: url('../assets/energy_banner_1782754442956.png');">
+                    <div class="accordion-overlay"></div>
+                    <div class="accordion-content">
+                        <div class="company-icon"><i data-lucide="battery-charging"></i></div>
+                        <h3 class="company-title">Agni Energy</h3>
+                        <p class="company-desc">Sustainable energy solutions, smart power backups, and green technologies.</p>
+                        <a href="#" class="company-link">Sustainable Solutions <i data-lucide="arrow-right"></i></a>
                     </div>
                 </div>
-
-                <div class="company-card glass-panel">
-                    <div class="company-card-glow"></div>
-                    <div class="company-card-bg"></div>
-                    <div class="company-card-content">
-                        <div>
-                            <div class="company-icon">
-                                <i data-lucide="truck" style="width: 28px; height: 28px;"></i>
-                            </div>
-                            <h3 class="company-title">Agni Logistics</h3>
-                            <p class="company-desc">Comprehensive supply chain management, cargo transportation, modern
-                                warehousing, and leasing facilities.</p>
-                        </div>
-                        <a href="#" class="company-link">Supply Chain Services <i data-lucide="arrow-right"
-                                style="width: 16px; height: 16px;"></i></a>
+                <div class="accordion-item" style="background-image: url('../assets/logistics_banner_1782754382855.png');">
+                    <div class="accordion-overlay"></div>
+                    <div class="accordion-content">
+                        <div class="company-icon"><i data-lucide="truck"></i></div>
+                        <h3 class="company-title">Agni Logistics</h3>
+                        <p class="company-desc">Comprehensive supply chain management, modern warehousing, and cargo.</p>
+                        <a href="#" class="company-link">Supply Chain Services <i data-lucide="arrow-right"></i></a>
                     </div>
                 </div>
-
-                <div class="company-card glass-panel">
-                    <div class="company-card-glow"></div>
-                    <div class="company-card-bg"></div>
-                    <div class="company-card-content">
-                        <div>
-                            <div class="company-icon">
-                                <i data-lucide="wrench" style="width: 28px; height: 28px;"></i>
-                            </div>
-                            <h3 class="company-title">Balaju Auto Works</h3>
-                            <p class="company-desc">State-of-the-art diagnostic service centers and after-sales support
-                                systems ensuring customer peace of mind.</p>
-                        </div>
-                        <a href="#" class="company-link">Service Center Locator <i data-lucide="arrow-right"
-                                style="width: 16px; height: 16px;"></i></a>
+                <div class="accordion-item" style="background-image: url('../assets/equipment_banner_1782754396388.png');">
+                    <div class="accordion-overlay"></div>
+                    <div class="accordion-content">
+                        <div class="company-icon"><i data-lucide="wrench"></i></div>
+                        <h3 class="company-title">Balaju Auto Works</h3>
+                        <p class="company-desc">State-of-the-art diagnostic service centers and after-sales support systems.</p>
+                        <a href="#" class="company-link">Service Center Locator <i data-lucide="arrow-right"></i></a>
                     </div>
                 </div>
+                <div class="accordion-item" style="background-image: url('../assets/hire_purchase_banner_1782754358007.png');">
+                    <div class="accordion-overlay"></div>
+                    <div class="accordion-content">
+                        <div class="company-icon"><i data-lucide="dollar-sign"></i></div>
+                        <h3 class="company-title">Agni Hire Purchase</h3>
+                        <p class="company-desc">Custom-tailored financial assistance, vehicle financing solutions, and leasing.</p>
+                        <a href="#" class="company-link">Apply for Financing <i data-lucide="arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                <div class="company-card glass-panel">
-                    <div class="company-card-glow"></div>
-                    <div class="company-card-bg"></div>
-                    <div class="company-card-content">
-                        <div>
-                            <div class="company-icon">
-                                <i data-lucide="dollar-sign" style="width: 28px; height: 28px;"></i>
-                            </div>
-                            <h3 class="company-title">Agni Hire Purchase</h3>
-                            <p class="company-desc">Custom-tailored financial assistance, vehicle financing solutions,
-                                and easy leasing plans for commercial clients.</p>
-                        </div>
-                        <a href="#" class="company-link">Apply for Financing <i data-lucide="arrow-right"
-                                style="width: 16px; height: 16px;"></i></a>
+    <!-- News & Events Section -->
+    <section id="news" class="section-padding reveal">
+        <div class="container">
+            <div class="section-header">
+                <h2>News &amp; Events</h2>
+                <p>Stay updated with the latest launches, events, and community activities from Agni Group.</p>
+            </div>
+
+            <div class="news-grid">
+                <!-- News 1 -->
+                <div class="news-card glass-panel">
+                    <div class="news-img" style="background-image: url('https://images.unsplash.com/photo-1593941707882-a5bba14938c7?q=80&w=600&auto=format&fit=crop');"></div>
+                    <div class="news-content">
+                        <span class="news-date">April 2026</span>
+                        <h3 class="news-title">Mahindra BE6 and XEV 9e Electric SUVs Launched in Chitwan</h3>
+                        <p class="news-excerpt">Ride comfort and handling are enhanced through advanced semi-active dampers, an i-Link front suspension...</p>
+                        <a href="#" class="btn-outline news-btn">Read More <i data-lucide="arrow-right"></i></a>
+                    </div>
+                </div>
+                <!-- News 2 -->
+                <div class="news-card glass-panel">
+                    <div class="news-img" style="background-image: url('https://images.unsplash.com/photo-1560958089-b8a1929cea89?q=80&w=600&auto=format&fit=crop');"></div>
+                    <div class="news-content">
+                        <span class="news-date">January 2026</span>
+                        <h3 class="news-title">नयाँ कार किनेपछि नायिका स्वस्तिमा खड्काको मन्द मुस्कान !</h3>
+                        <p class="news-excerpt">अभिनेत्री स्वस्तिमा खड्काले ६८ लाख पर्ने महेन्द्र को BE 6 इभि गाडी किनेकी छिन् ।।</p>
+                        <a href="#" class="btn-outline news-btn">Read More <i data-lucide="arrow-right"></i></a>
+                    </div>
+                </div>
+                <!-- News 3 -->
+                <div class="news-card glass-panel">
+                    <div class="news-img" style="background-image: url('https://images.unsplash.com/photo-1620882903746-b6059d4c9424?q=80&w=600&auto=format&fit=crop');"></div>
+                    <div class="news-content">
+                        <span class="news-date">January 2026</span>
+                        <h3 class="news-title">Actress Swastima Khadka Bought an Electric Car</h3>
+                        <p class="news-excerpt">Actress Swastima Khadka recently purchased an electric vehicle worth 6.8 million, showing support for green mobility.</p>
+                        <a href="#" class="btn-outline news-btn">Read More <i data-lucide="arrow-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -462,59 +516,8 @@
     <!-- Network Section / Interactive Map -->
     <section id="network" class="section-padding network-section reveal">
         <div class="container network-container">
-            <div class="network-map-wrapper glass-panel">
-                <svg class="nepal-mesh-map" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
-                    <!-- Abstract outline shape of Nepal -->
-                    <path class="nepal-border-outline"
-                        d="M 80,190 C 100,160 150,135 220,140 C 300,145 380,165 460,175 C 540,185 620,200 720,225 C 730,235 735,245 725,255 C 690,265 650,260 610,255 C 570,250 510,270 440,280 C 380,290 320,260 260,245 C 200,230 140,215 80,190 Z" />
-
-                    <!-- Background mesh/grid lines to symbolize connectivity -->
-                    <path class="map-mesh-lines"
-                        d="M150,180 L320,240 L440,280 L450,220 L680,250 M150,180 L450,220 M320,240 L450,220 L680,250"
-                        stroke="rgba(255, 77, 0, 0.12)" stroke-width="1.5" stroke-dasharray="8 6" fill="none" />
-                    <path class="map-mesh-flow" d="M100,200 C200,120 300,140 400,180 C500,220 600,150 700,220"
-                        stroke="rgba(200, 16, 46, 0.08)" stroke-width="2" fill="none" />
-
-                    <!-- Kohalpur Node -->
-                    <g class="map-node" data-city="kohalpur" transform="translate(150, 180)">
-                        <circle class="pulse-circle" r="10" />
-                        <circle r="6" />
-                        <text y="-15" text-anchor="middle" fill="#9ea3b2" font-size="11"
-                            font-family="Space Grotesk">Kohalpur</text>
-                    </g>
-
-                    <!-- Bhairahawa Node -->
-                    <g class="map-node" data-city="bhairahawa" transform="translate(320, 240)">
-                        <circle class="pulse-circle" r="10" />
-                        <circle r="6" />
-                        <text y="-15" text-anchor="middle" fill="#9ea3b2" font-size="11"
-                            font-family="Space Grotesk">Bhairahawa</text>
-                    </g>
-
-                    <!-- Birgunj Node -->
-                    <g class="map-node" data-city="birgunj" transform="translate(440, 280)">
-                        <circle class="pulse-circle" r="10" />
-                        <circle r="6" />
-                        <text y="20" text-anchor="middle" fill="#9ea3b2" font-size="11"
-                            font-family="Space Grotesk">Birgunj</text>
-                    </g>
-
-                    <!-- Kathmandu Node (HQ - Active by default) -->
-                    <g class="map-node active" data-city="kathmandu" transform="translate(490, 210)">
-                        <circle class="pulse-circle" r="12" />
-                        <circle r="8" fill="var(--brand-orange)" />
-                        <text y="-18" text-anchor="middle" fill="#ffffff" font-weight="bold" font-size="12"
-                            font-family="Space Grotesk">Kathmandu (HQ)</text>
-                    </g>
-
-                    <!-- Itahari Node -->
-                    <g class="map-node" data-city="itahari" transform="translate(680, 250)">
-                        <circle class="pulse-circle" r="10" />
-                        <circle r="6" />
-                        <text y="-15" text-anchor="middle" fill="#9ea3b2" font-size="11"
-                            font-family="Space Grotesk">Itahari</text>
-                    </g>
-                </svg>
+            <div class="network-map-wrapper glass-panel" style="padding: 0; overflow: hidden; position: relative;">
+                <div id="leaflet-map" style="width: 100%; height: 450px; z-index: 1;"></div>
             </div>
 
             <div class="network-info">
@@ -621,23 +624,98 @@
         </div>
     </section>
 
-    <!-- Global Partners infinite ticker -->
-    <section class="partners-section">
-        <h3>Global Partners &amp; Affiliations</h3>
-        <div class="ticker-wrap">
-            <div class="ticker">
-                <div class="ticker-item"><i data-lucide="shield"></i> MAHINDRA &amp; MAHINDRA</div>
-                <div class="ticker-item"><i data-lucide="zap"></i> MAHINDRA POWEROL</div>
-                <div class="ticker-item"><i data-lucide="globe"></i> SANGYONG MOBILITY</div>
-                <div class="ticker-item"><i data-lucide="flame"></i> AGNI FOUNDATION</div>
-                <div class="ticker-item"><i data-lucide="cpu"></i> BALAJU AUTO WORKS</div>
+    <!-- Global Partners & Affiliations - Hover Reveal -->
+    <section class="section-padding partners-reveal-section reveal" style="background: var(--bg-secondary);">
+        <div class="container">
+            <div class="section-header">
+                <h2>Global Partners &amp; Associates</h2>
+                <p>Collaborating with world-class brands to deliver excellence.</p>
+            </div>
 
-                <!-- Repeat for infinite illusion -->
-                <div class="ticker-item"><i data-lucide="shield"></i> MAHINDRA &amp; MAHINDRA</div>
-                <div class="ticker-item"><i data-lucide="zap"></i> MAHINDRA POWEROL</div>
-                <div class="ticker-item"><i data-lucide="globe"></i> SANGYONG MOBILITY</div>
-                <div class="ticker-item"><i data-lucide="flame"></i> AGNI FOUNDATION</div>
-                <div class="ticker-item"><i data-lucide="cpu"></i> BALAJU AUTO WORKS</div>
+            <div class="hover-reveal-grid">
+                <!-- Partner 1 -->
+                <div class="reveal-card glass-panel">
+                    <div class="reveal-front">
+                        <i data-lucide="shield" class="partner-icon"></i>
+                        <h4>Mahindra &amp; Mahindra</h4>
+                    </div>
+                    <div class="reveal-back">
+                        <h4>Mahindra &amp; Mahindra</h4>
+                        <p>Our primary partner in driving mobility and agricultural mechanization in Nepal.</p>
+                        <a href="#" class="reveal-link">Visit Website <i data-lucide="arrow-right" style="width: 14px; height: 14px;"></i></a>
+                    </div>
+                </div>
+
+                <!-- Partner 2 -->
+                <div class="reveal-card glass-panel">
+                    <div class="reveal-front">
+                        <i data-lucide="zap" class="partner-icon"></i>
+                        <h4>Mahindra Powerol</h4>
+                    </div>
+                    <div class="reveal-back">
+                        <h4>Mahindra Powerol</h4>
+                        <p>Providing robust diesel generators and sustainable power solutions.</p>
+                        <a href="#" class="reveal-link">Visit Website <i data-lucide="arrow-right" style="width: 14px; height: 14px;"></i></a>
+                    </div>
+                </div>
+
+                <!-- Partner 3 -->
+                <div class="reveal-card glass-panel">
+                    <div class="reveal-front">
+                        <i data-lucide="globe" class="partner-icon"></i>
+                        <h4>SsangYong Mobility</h4>
+                    </div>
+                    <div class="reveal-back">
+                        <h4>SsangYong Mobility</h4>
+                        <p>Distributing premium Korean SUVs and cross-over vehicles.</p>
+                        <a href="#" class="reveal-link">Visit Website <i data-lucide="arrow-right" style="width: 14px; height: 14px;"></i></a>
+                    </div>
+                </div>
+
+                <!-- Partner 4 -->
+                <div class="reveal-card glass-panel">
+                    <div class="reveal-front">
+                        <i data-lucide="wrench" class="partner-icon"></i>
+                        <h4>Balaju Auto Works</h4>
+                    </div>
+                    <div class="reveal-back">
+                        <h4>Balaju Auto Works</h4>
+                        <p>Authorized service and diagnostics center ensuring top-tier maintenance.</p>
+                        <a href="#" class="reveal-link">Visit Website <i data-lucide="arrow-right" style="width: 14px; height: 14px;"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-header" style="margin-top: 80px;">
+                <h2>Our Affiliations</h2>
+                <p>Proudly associated with leading national institutions.</p>
+            </div>
+
+            <div class="glass-badges-container">
+                <!-- Affiliation 1 -->
+                <div class="glass-badge">
+                    <div class="badge-content">
+                        <h4>NADA</h4>
+                        <span class="badge-sub">Automobile Assoc.</span>
+                    </div>
+                    <div class="badge-tooltip">Nepal Automobile Dealers Association.</div>
+                </div>
+                <!-- Affiliation 2 -->
+                <div class="glass-badge">
+                    <div class="badge-content">
+                        <h4>FNCCI</h4>
+                        <span class="badge-sub">Chamber of Commerce</span>
+                    </div>
+                    <div class="badge-tooltip">Federation of Nepalese Chambers of Commerce &amp; Industry.</div>
+                </div>
+                <!-- Affiliation 3 -->
+                <div class="glass-badge">
+                    <div class="badge-content">
+                        <h4>NICCI</h4>
+                        <span class="badge-sub">Nepal-India Chamber</span>
+                    </div>
+                    <div class="badge-tooltip">Nepal-India Chamber of Commerce &amp; Industry.</div>
+                </div>
             </div>
         </div>
     </section>
