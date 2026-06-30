@@ -4,6 +4,36 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize Lucide icons
     lucide.createIcons();
 
+    // 0. Theme Toggle
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const sunIcon = document.querySelector('.sun-icon');
+    const moonIcon = document.querySelector('.moon-icon');
+    
+    if (themeToggleBtn) {
+        // Check saved theme
+        const savedTheme = localStorage.getItem('agni-theme');
+        if (savedTheme === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+            if(sunIcon) sunIcon.style.display = 'none';
+            if(moonIcon) moonIcon.style.display = 'block';
+        }
+
+        themeToggleBtn.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            if (currentTheme === 'light') {
+                document.documentElement.removeAttribute('data-theme');
+                localStorage.setItem('agni-theme', 'dark');
+                if(sunIcon) sunIcon.style.display = 'block';
+                if(moonIcon) moonIcon.style.display = 'none';
+            } else {
+                document.documentElement.setAttribute('data-theme', 'light');
+                localStorage.setItem('agni-theme', 'light');
+                if(sunIcon) sunIcon.style.display = 'none';
+                if(moonIcon) moonIcon.style.display = 'block';
+            }
+        });
+    }
+
     // 1. Header Scroll State
     const header = document.querySelector('header');
     window.addEventListener('scroll', () => {
@@ -13,155 +43,240 @@ document.addEventListener('DOMContentLoaded', () => {
             header.classList.remove('scrolled');
         }
     });
-    // 1.5 Hero Section Slider Logic
+    // 1.5 Cinematic Full-Screen Slide-Up Logic
     const heroSlides = document.querySelectorAll('.hero-slide');
-    const heroDots = document.querySelectorAll('.hero-dot');
+    const heroDots = document.querySelectorAll('.slide-up-dot');
+    const prevHeroBtn = document.getElementById('cinematic-prev');
+    const nextHeroBtn = document.getElementById('cinematic-next');
+    const progressBar = document.querySelector('.slide-progress-bar');
     let currentHeroIndex = 0;
     let heroSliderTimer = null;
 
-    function showHeroSlide(index) {
-        currentHeroIndex = index;
-        
-        // Remove active class from all slides and dots
-        heroSlides.forEach(slide => slide.classList.remove('active'));
-        heroDots.forEach(dot => dot.classList.remove('active'));
+    function resetProgressBar() {
+        if (progressBar) {
+            progressBar.classList.remove('animate');
+            void progressBar.offsetWidth; // Force DOM reflow to reset CSS transition
+            progressBar.classList.add('animate');
+        }
+    }
 
-        // Add active class to selected slide and dot
-        heroSlides[currentHeroIndex].classList.add('active');
-        heroDots[currentHeroIndex].classList.add('active');
+    const companyNames = [
+        "AGNI INCORPORATE", "MOTO INC", "HIRE PURCHASE", "HOLDING", "LOGISTICS", 
+        "EQUIPMENT", "TECHNICAL INSTITUTE", "VERDA", "AASTHA FOUNDATION", "ENERGY"
+    ];
+
+    function updateCinematicNav() {
+        const prevNameEl = document.getElementById('prev-company-name');
+        const nextNameEl = document.getElementById('next-company-name');
+        if (prevNameEl && nextNameEl) {
+            let prevIndex = (currentHeroIndex - 1 + heroSlides.length) % heroSlides.length;
+            let nextIndex = (currentHeroIndex + 1) % heroSlides.length;
+            prevNameEl.textContent = companyNames[prevIndex];
+            nextNameEl.textContent = companyNames[nextIndex];
+        }
+    }
+
+    function showHeroSlide(index) {
+        if(heroSlides.length === 0 || index === currentHeroIndex) return;
+        
+        const prevIndex = currentHeroIndex;
+        let direction = 'right';
+        if (index < prevIndex) direction = 'left';
+        if (prevIndex === heroSlides.length - 1 && index === 0) direction = 'right';
+        if (prevIndex === 0 && index === heroSlides.length - 1) direction = 'left';
+        
+        heroSlides.forEach((slide, i) => {
+            slide.classList.remove('entering-left', 'entering-right', 'leaving-left', 'leaving-right');
+            
+            if (i === prevIndex) {
+                slide.classList.add(`leaving-${direction}`);
+                slide.classList.remove('active');
+                setTimeout(() => { slide.classList.remove(`leaving-${direction}`); }, 1200);
+            } else if (i !== index) {
+                slide.classList.remove('active');
+            }
+        });
+        
+        currentHeroIndex = index;
+
+        setTimeout(() => {
+            heroSlides[currentHeroIndex].classList.add(`entering-${direction}`);
+            heroSlides[currentHeroIndex].classList.add('active');
+            setTimeout(() => { heroSlides[currentHeroIndex].classList.remove(`entering-${direction}`); }, 50);
+        }, 20);
+        
+        updateCinematicNav();
     }
 
     function nextHeroSlide() {
+        if(heroSlides.length === 0) return;
         let nextIndex = (currentHeroIndex + 1) % heroSlides.length;
+        showHeroSlide(nextIndex);
+    }
+    
+    function prevHeroSlide() {
+        if(heroSlides.length === 0) return;
+        let nextIndex = (currentHeroIndex - 1 + heroSlides.length) % heroSlides.length;
         showHeroSlide(nextIndex);
     }
 
     function startHeroAutoplay() {
         stopHeroAutoplay();
-        heroSliderTimer = setInterval(nextHeroSlide, 6000); // Change slides every 6 seconds
+        resetProgressBar();
+        heroSliderTimer = setInterval(() => {
+            nextHeroSlide();
+            resetProgressBar();
+        }, 7000); 
     }
 
     function stopHeroAutoplay() {
         if (heroSliderTimer) {
             clearInterval(heroSliderTimer);
+            if (progressBar) progressBar.classList.remove('animate');
         }
     }
 
-    // Set click handlers for hero dots
+    if (prevHeroBtn) {
+        prevHeroBtn.addEventListener('click', () => { 
+            prevHeroSlide(); 
+            startHeroAutoplay(); 
+        });
+    }
+    
+    if (nextHeroBtn) {
+        nextHeroBtn.addEventListener('click', () => { 
+            nextHeroSlide(); 
+            startHeroAutoplay(); 
+        });
+    }
+
+    updateCinematicNav();
+
     heroDots.forEach((dot, index) => {
         dot.addEventListener('click', () => {
             showHeroSlide(index);
-            startHeroAutoplay(); // Restart autoplay timer
+            startHeroAutoplay(); 
         });
     });
 
-    // Start Autoplay immediately
     if (heroSlides.length > 0) {
         startHeroAutoplay();
     }
+
+    // 1.8 Interactive 3D Mouse Parallax Effect
+    window.addEventListener('mousemove', (e) => {
+        // Shift range is from -10px to 10px
+        const x = (e.clientX / window.innerWidth - 0.5) * 20;
+        const y = (e.clientY / window.innerHeight - 0.5) * 20;
+        document.documentElement.style.setProperty('--mouse-x', `${x}px`);
+        document.documentElement.style.setProperty('--mouse-y', `${y}px`);
+    });
+
     // 2. Ember Particle System (HTML5 Canvas with Interactive Mouse Motion)
     const canvas = document.getElementById('particle-canvas');
-    const ctx = canvas.getContext('2d');
+    if (canvas) {
+        const ctx = canvas.getContext('2d');
 
-    let width = canvas.width = window.innerWidth;
-    let height = canvas.height = window.innerHeight;
+        let width = canvas.width = window.innerWidth;
+        let height = canvas.height = window.innerHeight;
 
-    window.addEventListener('resize', () => {
-        width = canvas.width = window.innerWidth;
-        height = canvas.height = window.innerHeight;
-    });
+        window.addEventListener('resize', () => {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        });
 
-    class Ember {
-        constructor() {
-            this.reset();
+        class Ember {
+            constructor() {
+                this.reset();
+            }
+
+            reset() {
+                this.x = Math.random() * width;
+                this.y = height + Math.random() * 100;
+                this.size = Math.random() * 3 + 1;
+                this.speedY = -(Math.random() * 1.5 + 0.5);
+                this.speedX = Math.random() * 1 - 0.5;
+                this.alpha = 1;
+                this.fade = Math.random() * 0.005 + 0.002;
+                this.isMouseSpawned = false;
+                // Flame gold/orange/red variations
+                const colors = [
+                    'rgba(255, 77, 0, ',
+                    'rgba(200, 16, 46, ',
+                    'rgba(255, 165, 0, '
+                ];
+                this.colorBase = colors[Math.floor(Math.random() * colors.length)];
+            }
+
+            update() {
+                this.y += this.speedY;
+                this.x += this.speedX + Math.sin(this.y / 30) * 0.2; // organic drift
+                this.alpha -= this.fade;
+
+                if (this.alpha <= 0 || this.x < 0 || this.x > width || this.y < 0) {
+                    if (this.isMouseSpawned) {
+                        return false; // mark for removal
+                    } else {
+                        this.reset();
+                    }
+                }
+                return true; // keep alive
+            }
+
+            draw() {
+                ctx.shadowBlur = this.size * 2;
+                ctx.shadowColor = 'rgba(255, 77, 0, 0.5)';
+                ctx.fillStyle = this.colorBase + this.alpha + ')';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
         }
 
-        reset() {
-            this.x = Math.random() * width;
-            this.y = height + Math.random() * 100;
-            this.size = Math.random() * 3 + 1;
-            this.speedY = -(Math.random() * 1.5 + 0.5);
-            this.speedX = Math.random() * 1 - 0.5;
-            this.alpha = 1;
-            this.fade = Math.random() * 0.005 + 0.002;
-            this.isMouseSpawned = false;
-            // Flame gold/orange/red variations
-            const colors = [
-                'rgba(255, 77, 0, ',
-                'rgba(200, 16, 46, ',
-                'rgba(255, 165, 0, '
-            ];
-            this.colorBase = colors[Math.floor(Math.random() * colors.length)];
-        }
+        const embers = Array.from({ length: 45 }, () => new Ember());
 
-        update() {
-            this.y += this.speedY;
-            this.x += this.speedX + Math.sin(this.y / 30) * 0.2; // organic drift
-            this.alpha -= this.fade;
-
-            if (this.alpha <= 0 || this.x < 0 || this.x > width || this.y < 0) {
-                if (this.isMouseSpawned) {
-                    return false; // mark for removal
-                } else {
-                    this.reset();
+        // Mouse movement spawns embers
+        window.addEventListener('mousemove', (e) => {
+            // Only spawn on the hero section area to avoid overloading resources
+            if (e.clientY < window.innerHeight) {
+                for (let i = 0; i < 2; i++) {
+                    const spawned = new Ember();
+                    spawned.x = e.clientX + (Math.random() * 20 - 10);
+                    spawned.y = e.clientY + (Math.random() * 20 - 10);
+                    spawned.alpha = 1;
+                    spawned.size = Math.random() * 4 + 1.5;
+                    spawned.speedY = -(Math.random() * 1.8 + 0.8);
+                    spawned.speedX = Math.random() * 1.5 - 0.75;
+                    spawned.isMouseSpawned = true;
+                    embers.push(spawned);
                 }
             }
-            return true; // keep alive
-        }
+        });
 
-        draw() {
-            ctx.shadowBlur = this.size * 2;
-            ctx.shadowColor = 'rgba(255, 77, 0, 0.5)';
-            ctx.fillStyle = this.colorBase + this.alpha + ')';
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-            ctx.fill();
-        }
-    }
-
-    const embers = Array.from({ length: 45 }, () => new Ember());
-
-    // Mouse movement spawns embers
-    window.addEventListener('mousemove', (e) => {
-        // Only spawn on the hero section area to avoid overloading resources
-        if (e.clientY < window.innerHeight) {
-            for (let i = 0; i < 2; i++) {
-                const spawned = new Ember();
-                spawned.x = e.clientX + (Math.random() * 20 - 10);
-                spawned.y = e.clientY + (Math.random() * 20 - 10);
-                spawned.alpha = 1;
-                spawned.size = Math.random() * 4 + 1.5;
-                spawned.speedY = -(Math.random() * 1.8 + 0.8);
-                spawned.speedX = Math.random() * 1.5 - 0.75;
-                spawned.isMouseSpawned = true;
-                embers.push(spawned);
+        function animateParticles() {
+            ctx.clearRect(0, 0, width, height);
+            ctx.shadowBlur = 0;
+            
+            for (let i = embers.length - 1; i >= 0; i--) {
+                const ember = embers[i];
+                const alive = ember.update();
+                if (!alive) {
+                    embers.splice(i, 1);
+                } else {
+                    ember.draw();
+                }
             }
-        }
-    });
 
-    function animateParticles() {
-        ctx.clearRect(0, 0, width, height);
-        ctx.shadowBlur = 0;
-        
-        for (let i = embers.length - 1; i >= 0; i--) {
-            const ember = embers[i];
-            const alive = ember.update();
-            if (!alive) {
-                embers.splice(i, 1);
-            } else {
-                ember.draw();
+            // Maintain ambient background count
+            const bgEmberCount = embers.filter(e => !e.isMouseSpawned).length;
+            if (bgEmberCount < 45) {
+                embers.push(new Ember());
             }
+            
+            requestAnimationFrame(animateParticles);
         }
-
-        // Maintain ambient background count
-        const bgEmberCount = embers.filter(e => !e.isMouseSpawned).length;
-        if (bgEmberCount < 45) {
-            embers.push(new Ember());
-        }
-        
-        requestAnimationFrame(animateParticles);
+        animateParticles();
     }
-    animateParticles();
 
     // 3. Stats Counter
     const stats = document.querySelectorAll('.stat-number');
