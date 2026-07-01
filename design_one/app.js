@@ -612,5 +612,36 @@ document.addEventListener('DOMContentLoaded', () => {
         autoScroll();
     }
 
+    // 13. Affiliation Filtering Logic
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const affiliations = document.querySelectorAll('.glass-badge[data-category]');
+
+    if (filterBtns.length > 0 && affiliations.length > 0) {
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterBtns.forEach(b => b.classList.remove('active'));
+                // Add active class to clicked button
+                btn.classList.add('active');
+
+                const filterValue = btn.getAttribute('data-filter');
+
+                affiliations.forEach(item => {
+                    const category = item.getAttribute('data-category');
+                    if (filterValue === 'all' || filterValue === category) {
+                        item.style.display = 'flex';
+                        // Add a small animation effect
+                        item.style.opacity = '0';
+                        setTimeout(() => {
+                            item.style.transition = 'opacity 0.3s ease';
+                            item.style.opacity = '1';
+                        }, 50);
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+    }
 
 });
