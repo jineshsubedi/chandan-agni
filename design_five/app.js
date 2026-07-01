@@ -1,6 +1,9 @@
 // Agni Group Nepal - Interactive UI/UX Scripts
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Framer Motion Vanilla
+    const { animate, scroll, inView, stagger, spring } = window.Motion;
+
     // Initialize Lucide icons
     lucide.createIcons();
 
@@ -8,14 +11,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const themeToggleBtn = document.getElementById('theme-toggle');
     const sunIcon = document.querySelector('.sun-icon');
     const moonIcon = document.querySelector('.moon-icon');
-
+    
     if (themeToggleBtn) {
         // Check saved theme
         const savedTheme = localStorage.getItem('agni-theme');
         if (savedTheme === 'light') {
             document.documentElement.setAttribute('data-theme', 'light');
-            if (sunIcon) sunIcon.style.display = 'none';
-            if (moonIcon) moonIcon.style.display = 'block';
+            if(sunIcon) sunIcon.style.display = 'none';
+            if(moonIcon) moonIcon.style.display = 'block';
         }
 
         themeToggleBtn.addEventListener('click', () => {
@@ -23,13 +26,13 @@ document.addEventListener('DOMContentLoaded', () => {
             if (currentTheme === 'light') {
                 document.documentElement.removeAttribute('data-theme');
                 localStorage.setItem('agni-theme', 'dark');
-                if (sunIcon) sunIcon.style.display = 'block';
-                if (moonIcon) moonIcon.style.display = 'none';
+                if(sunIcon) sunIcon.style.display = 'block';
+                if(moonIcon) moonIcon.style.display = 'none';
             } else {
                 document.documentElement.setAttribute('data-theme', 'light');
                 localStorage.setItem('agni-theme', 'light');
-                if (sunIcon) sunIcon.style.display = 'none';
-                if (moonIcon) moonIcon.style.display = 'block';
+                if(sunIcon) sunIcon.style.display = 'none';
+                if(moonIcon) moonIcon.style.display = 'block';
             }
         });
     }
@@ -61,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const companyNames = [
-        "AGNI INCORPORATE", "MOTO INC", "HIRE PURCHASE", "HOLDING", "LOGISTICS",
+        "AGNI INCORPORATE", "MOTO INC", "HIRE PURCHASE", "HOLDING", "LOGISTICS", 
         "EQUIPMENT", "TECHNICAL INSTITUTE", "VERDA", "AASTHA FOUNDATION", "ENERGY"
     ];
 
@@ -77,17 +80,17 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function showHeroSlide(index) {
-        if (heroSlides.length === 0 || index === currentHeroIndex) return;
-
+        if(heroSlides.length === 0 || index === currentHeroIndex) return;
+        
         const prevIndex = currentHeroIndex;
         let direction = 'right';
         if (index < prevIndex) direction = 'left';
         if (prevIndex === heroSlides.length - 1 && index === 0) direction = 'right';
         if (prevIndex === 0 && index === heroSlides.length - 1) direction = 'left';
-
+        
         heroSlides.forEach((slide, i) => {
             slide.classList.remove('entering-left', 'entering-right', 'leaving-left', 'leaving-right');
-
+            
             if (i === prevIndex) {
                 slide.classList.add(`leaving-${direction}`);
                 slide.classList.remove('active');
@@ -96,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 slide.classList.remove('active');
             }
         });
-
+        
         currentHeroIndex = index;
 
         setTimeout(() => {
@@ -104,18 +107,18 @@ document.addEventListener('DOMContentLoaded', () => {
             heroSlides[currentHeroIndex].classList.add('active');
             setTimeout(() => { heroSlides[currentHeroIndex].classList.remove(`entering-${direction}`); }, 50);
         }, 20);
-
+        
         updateCinematicNav();
     }
 
     function nextHeroSlide() {
-        if (heroSlides.length === 0) return;
+        if(heroSlides.length === 0) return;
         let nextIndex = (currentHeroIndex + 1) % heroSlides.length;
         showHeroSlide(nextIndex);
     }
-
+    
     function prevHeroSlide() {
-        if (heroSlides.length === 0) return;
+        if(heroSlides.length === 0) return;
         let nextIndex = (currentHeroIndex - 1 + heroSlides.length) % heroSlides.length;
         showHeroSlide(nextIndex);
     }
@@ -126,7 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
         heroSliderTimer = setInterval(() => {
             nextHeroSlide();
             resetProgressBar();
-        }, 7000);
+        }, 7000); 
     }
 
     function stopHeroAutoplay() {
@@ -137,16 +140,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (prevHeroBtn) {
-        prevHeroBtn.addEventListener('click', () => {
-            prevHeroSlide();
-            startHeroAutoplay();
+        prevHeroBtn.addEventListener('click', () => { 
+            prevHeroSlide(); 
+            startHeroAutoplay(); 
         });
     }
-
+    
     if (nextHeroBtn) {
-        nextHeroBtn.addEventListener('click', () => {
-            nextHeroSlide();
-            startHeroAutoplay();
+        nextHeroBtn.addEventListener('click', () => { 
+            nextHeroSlide(); 
+            startHeroAutoplay(); 
         });
     }
 
@@ -155,7 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
     heroDots.forEach((dot, index) => {
         dot.addEventListener('click', () => {
             showHeroSlide(index);
-            startHeroAutoplay();
+            startHeroAutoplay(); 
         });
     });
 
@@ -256,7 +259,7 @@ document.addEventListener('DOMContentLoaded', () => {
         function animateParticles() {
             ctx.clearRect(0, 0, width, height);
             ctx.shadowBlur = 0;
-
+            
             for (let i = embers.length - 1; i >= 0; i--) {
                 const ember = embers[i];
                 const alive = ember.update();
@@ -272,7 +275,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (bgEmberCount < 45) {
                 embers.push(new Ember());
             }
-
+            
             requestAnimationFrame(animateParticles);
         }
         animateParticles();
@@ -280,53 +283,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 3. Stats Counter
     const stats = document.querySelectorAll('.stat-number');
-    const statsObserverOptions = {
-        threshold: 0.5,
-        rootMargin: '0px'
-    };
-
-    const statsObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const target = entry.target;
-                const targetNumber = parseInt(target.getAttribute('data-target'), 10);
-                let current = 0;
-                const duration = 2000; // 2 seconds duration
-                const stepTime = Math.max(Math.floor(duration / targetNumber), 15);
-
-                const counter = setInterval(() => {
-                    current += Math.ceil(targetNumber / 100);
-                    if (current >= targetNumber) {
-                        target.textContent = targetNumber + (target.id === 'years' ? '+' : '+');
-                        clearInterval(counter);
-                    } else {
-                        target.textContent = current + '+';
+    if (stats.length > 0) {
+        inView('.stats-section', () => {
+            stats.forEach(stat => {
+                const targetNumber = parseInt(stat.getAttribute('data-target'), 10);
+                animate(0, targetNumber, {
+                    duration: 2.5,
+                    ease: "easeOut",
+                    onUpdate: latest => {
+                        stat.textContent = Math.round(latest).toLocaleString() + '+';
                     }
-                }, stepTime);
+                });
+            });
+        }, { margin: "-50px" });
+    }
 
-                observer.unobserve(target);
-            }
-        });
-    }, statsObserverOptions);
-
-    stats.forEach(stat => statsObserver.observe(stat));
-
-    // 4. Scroll Reveal Animations
+    // 4. Scroll Reveal Animations with Framer Motion
     const reveals = document.querySelectorAll('.reveal');
-    const revealObserverOptions = {
-        threshold: 0.15,
-        rootMargin: '0px'
-    };
-
-    const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('revealed');
-            }
-        });
-    }, revealObserverOptions);
-
-    reveals.forEach(reveal => revealObserver.observe(reveal));
+    reveals.forEach(reveal => {
+        // Initial state
+        reveal.style.opacity = 0;
+        reveal.style.transform = 'translateY(40px)';
+        
+        inView(reveal, (entry) => {
+            const target = entry.target || entry; // fallback if entry is the element itself
+            animate(target, 
+                { opacity: 1, y: 0 }, 
+                { duration: 0.8, ease: "easeOut" }
+            );
+        }, { margin: "-100px" });
+    });
 
     // 5. Interactive Nepal Abstract Network Map
     const cityData = {
@@ -517,8 +503,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Determine if light or dark theme based on html data-theme
         const isLight = document.documentElement.getAttribute('data-theme') === 'light';
-        const tileUrl = isLight ?
-            'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png' :
+        const tileUrl = isLight ? 
+            'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png' : 
             'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png';
 
         L.tileLayer(tileUrl, {
@@ -563,8 +549,8 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('theme-toggle').addEventListener('click', () => {
             setTimeout(() => {
                 const newIsLight = document.documentElement.getAttribute('data-theme') === 'light';
-                const newTileUrl = newIsLight ?
-                    'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png' :
+                const newTileUrl = newIsLight ? 
+                    'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png' : 
                     'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png';
                 L.tileLayer(newTileUrl, {
                     attribution: '&copy; OpenStreetMap contributors &copy; CARTO'
@@ -588,7 +574,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const trackLine = track.querySelector('.track-line');
             if (trackLine) trackLine.style.width = '6000px';
-
+            
             const paddingDiv = track.querySelector('div[style*="width: 2500px"]');
             if (paddingDiv) paddingDiv.style.width = '5200px';
         }
@@ -643,5 +629,48 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+
+    // 14. UIPro Custom Cursor
+    const cursor = document.createElement('div');
+    cursor.classList.add('uipro-cursor');
+    document.body.appendChild(cursor);
+
+    window.addEventListener('mousemove', (e) => {
+        animate(cursor, { 
+            x: e.clientX - 10, 
+            y: e.clientY - 10 
+        }, { 
+            duration: 0.1,
+            ease: "easeOut"
+        });
+    });
+
+    const hoverElements = document.querySelectorAll('a, button, .accordion-item, .glass-badge');
+    hoverElements.forEach(el => {
+        el.addEventListener('mouseenter', () => {
+            cursor.classList.add('hovering');
+        });
+        el.addEventListener('mouseleave', () => {
+            cursor.classList.remove('hovering');
+        });
+    });
+
+    // 15. UIPro Magnetic Buttons
+    const magneticButtons = document.querySelectorAll('.btn-primary, .btn-outline, .social-icon');
+    magneticButtons.forEach(btn => {
+        btn.addEventListener('mousemove', (e) => {
+            const rect = btn.getBoundingClientRect();
+            const h = rect.width / 2;
+            
+            const x = e.clientX - rect.left - h;
+            const y = e.clientY - rect.top - (rect.height / 2);
+
+            animate(btn, { x: x * 0.3, y: y * 0.3 }, { duration: 0.1 });
+        });
+
+        btn.addEventListener('mouseleave', () => {
+            animate(btn, { x: 0, y: 0 }, { duration: 0.5, ease: "easeOut" });
+        });
+    });
 
 });
