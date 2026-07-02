@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agni Group | Nepal's Leading Mobility Partner</title>
+  <meta name="description"
+    content="Agni Group — Nepal's most trusted automotive conglomerate since 1991. Authorized distributor of Mahindra vehicles, energy solutions, logistics and more.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Sora:wght@300;400;600;700;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- Global Video Background -->
+  <div class="global-bg">
+    <video autoplay muted loop playsinline class="global-bg-video">
+      <source src="../assets/hero_bg_video.mp4" type="video/mp4">
+    </video>
+    <div class="global-bg-overlay"></div>
+  </div>
+
+  <!-- Cursor glow -->
+  <div class="cursor-glow" id="cursorGlow"></div>
+
+  <!-- Ambient orbs -->
+  <div class="ambient-orb orb-1"></div>
+  <div class="ambient-orb orb-2"></div>
+  <div class="ambient-orb orb-3"></div>
+
+  <!-- ========== NAV ========== -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a class="nav-logo" href="#">
+        <span class="logo-fire">🔥</span>
+        <span class="logo-text">Agni <em>Group</em></span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">About</a></li>
+        <li><a href="#divisions">Divisions</a></li>
+        <li><a href="#vehicles">Vehicles</a></li>
+        <li><a href="#timeline">Story</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="btn-pill" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get in
+          Touch</button>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ========== HERO ========== -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <br>
+      <br>
+      <div class="hero-badge reveal">
+        <span class="badge-dot"></span>
+        Established 1991 · 30+ Years of Excellence
+      </div>
+      <h1 class="hero-title reveal">
+        Nepal's Most <br>
+        <span class="gradient-text">Trusted Mobility</span><br>
+        Partner
+      </h1>
+      <p class="hero-sub reveal">Powering Nepal's roads with Mahindra vehicles, clean energy, and nationwide logistics —
+        from the mountains to the plains.</p>
+      <div class="hero-cta reveal">
+        <button class="btn-primary"
+          onclick="document.getElementById('vehicles').scrollIntoView({behavior:'smooth'})">Explore Vehicles</button>
+        <button class="btn-ghost" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">Our
+          Story ↓</button>
+      </div>
+      <div class="hero-stats reveal">
+        <div class="hstat"><span class="hstat-num" data-target="80">0</span><span>+</span>
+          <p>Dealers</p>
+        </div>
+        <div class="hstat-div"></div>
+        <div class="hstat"><span class="hstat-num" data-target="35">0</span><span>+</span>
+          <p>Years</p>
+        </div>
+        <div class="hstat-div"></div>
+        <div class="hstat"><span class="hstat-num" data-target="6">0</span><span></span>
+          <p>Divisions</p>
+        </div>
+        <div class="hstat-div"></div>
+        <div class="hstat"><span class="hstat-num" data-target="5">0</span><span></span>
+          <p>Regions</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== ABOUT ========== -->
+  <section class="about section" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-text reveal-left">
+          <span class="section-tag">Who We Are</span>
+          <h2 class="section-heading">Three Decades of Driving Nepal Forward</h2>
+          <p>Agni Group began in 1991 as the exclusive authorized distributor of Mahindra utility vehicles and tractors
+            in Nepal. Over three decades, we've grown into a nationwide mobility conglomerate — serving hundreds of
+            thousands of Nepali families.</p>
+          <p>Our mission is simple: <em>empower people, enrich lives, and contribute to Nepal's development</em> through
+            accessible, reliable mobility solutions.</p>
+          <div class="value-pills">
+            <span class="pill">Customer Delight</span>
+            <span class="pill">Honesty</span>
+            <span class="pill">Positivity</span>
+            <span class="pill">Zeal</span>
+            <span class="pill">Professional Excellence</span>
+          </div>
+        </div>
+        <div class="about-visual reveal-right">
+          <div class="about-img-wrap">
+            <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=700&q=80"
+              alt="Agni Group vehicles" loading="lazy">
+            <div class="about-badge">
+              <span class="badge-big">35+</span>
+              <span>Years of Trust</span>
+            </div>
+          </div>
+          <div class="about-mini-cards">
+            <div class="mini-card">
+              <span class="mini-icon">🏆</span>
+              <strong>Market Leader</strong>
+              <p>Nepal's #1 Mahindra distributor</p>
+            </div>
+            <div class="mini-card">
+              <span class="mini-icon">🔧</span>
+              <strong>After-Sales</strong>
+              <p>Nationwide service network</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== DIVISIONS BENTO ========== -->
+  <section class="divisions section" id="divisions">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Our Portfolio</span>
+        <h2 class="section-heading">Six Powerful Divisions</h2>
+        <p class="section-sub">A diversified mobility ecosystem serving Nepal's entire transportation landscape.</p>
+      </div>
+      <div class="bento-grid">
+        <div class="bento-card bento-lg reveal" style="--delay:0s">
+          <div class="bento-icon">🚙</div>
+          <h3>Agni Incorporated</h3>
+          <p>The flagship division responsible for Mahindra utility vehicles, tractors, parts, and comprehensive service
+            operations across Nepal.</p>
+          <div class="bento-tag">Flagship</div>
+          <div class="bento-bg-shape"></div>
+        </div>
+        <div class="bento-card reveal" style="--delay:0.1s">
+          <div class="bento-icon">🏍️</div>
+          <h3>Agni Moto Inc.</h3>
+          <p>Two-wheelers, electric three-wheelers &amp; Powerol generators.</p>
+          <div class="bento-tag">Mobility</div>
+        </div>
+        <div class="bento-card reveal" style="--delay:0.15s">
+          <div class="bento-icon">⚡</div>
+          <h3>Agni Energy</h3>
+          <p>Power solutions, generators, and clean energy technologies.</p>
+          <div class="bento-tag">Energy</div>
+        </div>
+        <div class="bento-card reveal" style="--delay:0.2s">
+          <div class="bento-icon">🔩</div>
+          <h3>Balaju Auto Works</h3>
+          <p>Premium after-sales, vehicle maintenance and service excellence.</p>
+          <div class="bento-tag">Service</div>
+        </div>
+        <div class="bento-card bento-wide reveal" style="--delay:0.25s">
+          <div class="bento-icon">🚛</div>
+          <h3>Agni Logistics</h3>
+          <p>Established 2018 — transportation, warehousing, distribution, leasing and full supply chain management.
+            Aiming to become Nepal's largest logistics provider.</p>
+          <div class="bento-tag">Logistics</div>
+          <div class="bento-bg-shape bento-bg-2"></div>
+        </div>
+        <div class="bento-card bento-accent reveal" style="--delay:0.3s">
+          <div class="bento-icon">🌱</div>
+          <h3>EV Future</h3>
+          <p>Launching Mahindra BE6 &amp; XEV9e electric SUVs in Nepal — 2025.</p>
+          <div class="bento-tag">Green</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== VEHICLES ========== -->
+  <section class="vehicles section" id="vehicles">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Our Fleet</span>
+        <h2 class="section-heading">Featured Vehicles</h2>
+        <p class="section-sub">From rugged SUVs to commercial workhorses and electric pioneers.</p>
+      </div>
+      <div class="vehicle-tabs reveal">
+        <button class="vtab active" data-cat="all">All</button>
+        <button class="vtab" data-cat="suv">SUVs</button>
+        <button class="vtab" data-cat="commercial">Commercial</button>
+        <button class="vtab" data-cat="ev">Electric</button>
+        <button class="vtab" data-cat="agri">Agriculture</button>
+      </div>
+      <div class="vehicle-grid">
+        <div class="vcard reveal" data-cat="suv" style="--delay:0s">
+          <div class="vcard-img">
+            <img src="https://images.unsplash.com/photo-1601362840469-51e4d8d58785?auto=format&fit=crop&w=600&q=80"
+              alt="Mahindra XUV700" loading="lazy">
+            <div class="vcard-badge">Flagship</div>
+          </div>
+          <div class="vcard-body">
+            <h3>Mahindra XUV700</h3>
+            <p class="vcard-cat">Premium SUV</p>
+            <p>AdrenoX connected tech, ADAS safety suite, and segment-best performance.</p>
+            <button class="btn-card">Book Now →</button>
+          </div>
+        </div>
+        <div class="vcard reveal" data-cat="suv" style="--delay:0.1s">
+          <div class="vcard-img">
+            <img src="https://images.unsplash.com/photo-1606016159991-dfe4f2746ad5?auto=format&fit=crop&w=600&q=80"
+              alt="Mahindra Scorpio N" loading="lazy">
+            <div class="vcard-badge">Popular</div>
+          </div>
+          <div class="vcard-body">
+            <h3>Mahindra Scorpio N</h3>
+            <p class="vcard-cat">SUV</p>
+            <p>Bold design with best-in-class 4WD capability and modern interiors.</p>
+            <button class="btn-card">Book Now →</button>
+          </div>
+        </div>
+        <div class="vcard reveal" data-cat="suv" style="--delay:0.15s">
+          <div class="vcard-img">
+            <img src="https://images.unsplash.com/photo-1601362840469-51e4d8d58785?auto=format&fit=crop&w=600&q=80"
+              alt="Mahindra XUV3XO" loading="lazy">
+          </div>
+          <div class="vcard-body">
+            <h3>Mahindra XUV3XO</h3>
+            <p class="vcard-cat">Compact SUV</p>
+            <p>Urban-ready compact SUV with premium features and peppy performance.</p>
+            <button class="btn-card">Book Now →</button>
+          </div>
+        </div>
+        <div class="vcard reveal" data-cat="ev" style="--delay:0.2s">
+          <div class="vcard-img">
+            <img src="https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=600&q=80"
+              alt="Mahindra BE6" loading="lazy">
+            <div class="vcard-badge vcard-badge-ev">EV · 2025</div>
+          </div>
+          <div class="vcard-body">
+            <h3>Mahindra BE6</h3>
+            <p class="vcard-cat">Electric SUV</p>
+            <p>Next-gen electric SUV with 682km range. Coming to Nepal in 2025.</p>
+            <button class="btn-card">Pre-Register →</button>
+          </div>
+        </div>
+        <div class="vcard reveal" data-cat="commercial" style="--delay:0.25s">
+          <div class="vcard-img">
+            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=600&q=80"
+              alt="Bolero Camper" loading="lazy">
+          </div>
+          <div class="vcard-body">
+            <h3>Bolero Camper</h3>
+            <p class="vcard-cat">Commercial</p>
+            <p>Nepal's most trusted workhorse — rugged, reliable, and built for tough terrain.</p>
+            <button class="btn-card">Book Now →</button>
+          </div>
+        </div>
+        <div class="vcard reveal" data-cat="agri" style="--delay:0.3s">
+          <div class="vcard-img">
+            <img src="https://images.unsplash.com/photo-1585771724684-38269d6639fd?auto=format&fit=crop&w=600&q=80"
+              alt="Mahindra Tractor" loading="lazy">
+          </div>
+          <div class="vcard-body">
+            <h3>Mahindra Tractors</h3>
+            <p class="vcard-cat">Agriculture</p>
+            <p>Empowering Nepal's farmers with reliable, fuel-efficient agricultural power.</p>
+            <button class="btn-card">Explore →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TIMELINE ========== -->
+  <section class="timeline-section section" id="timeline">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Our Journey</span>
+        <h2 class="section-heading">Milestones That Defined Us</h2>
+      </div>
+      <div class="timeline">
+        <div class="tl-item reveal tl-left">
+          <div class="tl-dot"></div>
+          <div class="tl-card">
+            <span class="tl-year">1991</span>
+            <h4>The Spark Ignites</h4>
+            <p>Founded as the exclusive authorized distributor of Mahindra utility vehicles and tractors in Nepal.</p>
+          </div>
+        </div>
+        <div class="tl-item reveal tl-right">
+          <div class="tl-dot"></div>
+          <div class="tl-card">
+            <span class="tl-year">2018</span>
+            <h4>Logistics Leap</h4>
+            <p>Agni Logistic Pvt. Ltd. established — expanding into transportation, warehousing &amp; supply chain.</p>
+          </div>
+        </div>
+        <div class="tl-item reveal tl-left">
+          <div class="tl-dot"></div>
+          <div class="tl-card">
+            <span class="tl-year">2022</span>
+            <h4>30 Years Strong</h4>
+            <p>Celebrated three decades of operations with 80+ dealers across Nepal's five regions.</p>
+          </div>
+        </div>
+        <div class="tl-item reveal tl-right">
+          <div class="tl-dot"></div>
+          <div class="tl-card">
+            <span class="tl-year">2023</span>
+            <h4>XUV Era</h4>
+            <p>Launched Mahindra XUV300 and XUV700 in Nepal — bringing world-class SUV technology.</p>
+          </div>
+        </div>
+        <div class="tl-item reveal tl-left">
+          <div class="tl-dot tl-dot-accent"></div>
+          <div class="tl-card tl-card-accent">
+            <span class="tl-year">2025</span>
+            <h4>Electric Revolution</h4>
+            <p>Launching Mahindra BE6 &amp; XEV9e electric SUVs — leading Nepal's clean mobility future.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== LEADERSHIP ========== -->
+  <section class="leadership section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Leadership</span>
+        <h2 class="section-heading">Visionaries at the Helm</h2>
+      </div>
+      <div class="leaders-grid">
+        <div class="leader-card reveal" style="--delay:0s">
+          <div class="leader-avatar">
+            <img src="https://ui-avatars.com/api/?name=Cabinet+Shrestha&background=4f46e5&color=fff&size=200&bold=true"
+              alt="Cabinet Shrestha">
+          </div>
+          <h3>Cabinet Shrestha</h3>
+          <span class="leader-role">Chairman</span>
+          <p>"Our vision is to remain a leading mobility company, identify opportunities ahead of competitors, and
+            contribute to a more productive and accessible Nepal."</p>
+        </div>
+        <div class="leader-card reveal" style="--delay:0.1s">
+          <div class="leader-avatar">
+            <img src="https://ui-avatars.com/api/?name=Susan+Shrestha&background=7c3aed&color=fff&size=200&bold=true"
+              alt="Susan Shrestha">
+          </div>
+          <h3>Susan Shrestha</h3>
+          <span class="leader-role">Managing Director</span>
+          <p>"We are committed to delivering customer delight, honesty, and professional excellence across all our
+            diverse business units."</p>
+        </div>
+        <div class="leader-card reveal" style="--delay:0.2s">
+          <div class="leader-avatar">
+            <img src="https://ui-avatars.com/api/?name=Arjun+Sharma&background=db2777&color=fff&size=200&bold=true"
+              alt="Arjun Sharma">
+          </div>
+          <h3>Arjun Sharma</h3>
+          <span class="leader-role">Executive Director</span>
+          <p>"Through Balaju Auto Works and our service centers, we guarantee the best after-sales support
+            infrastructure in Nepal."</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== MAHINDRA SPIRIT ========== -->
+  <section class="spirit section" id="spirit">
+    <div class="container">
+      <div class="spirit-grid">
+        <div class="spirit-text reveal-left">
+          <span class="section-tag">To The Top Of The World</span>
+          <h2 class="section-heading">Mahindra Spirit</h2>
+          <p>Popular Nepali actress <strong>Nisha Adhikari</strong> has become the first Nepali actress to climb the
+            world’s highest peak – Mt. Everest. She successfully climbed Mt. Everest on Tuesday (21/05/2013) morning at
+            8:00 am.</p>
+          <p>By summiting Everest and Lhotse within 48 hours, she’s turned ambition into altitude — a true embodiment of
+            the Mahindra spirit: fearless, determined, and built for challenges.</p>
+          <p class="spirit-quote">"From our logo to her legacy — this moment is mountain-sized."</p>
+        </div>
+        <div class="spirit-visual reveal-right">
+          <div class="spirit-img-wrap">
+            <img src="https://images.unsplash.com/photo-1522163182402-834f871fd851?auto=format&fit=crop&w=800&q=80"
+              alt="Everest Peak" loading="lazy">
+            <div class="spirit-overlay"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== NEWS & EVENTS ========== -->
+  <section class="news section" id="news">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Stay Updated</span>
+        <h2 class="section-heading">News & Events</h2>
+      </div>
+      <div class="news-grid">
+        <div class="news-card reveal" style="--delay:0s">
+          <div class="news-img">
+            <img src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=600&q=80"
+              alt="Kohalpur Office" loading="lazy">
+          </div>
+          <div class="news-body">
+            <span class="news-date">Oct 29, 2023</span>
+            <h3>Agni Group establishes new regional office at Kohalpur</h3>
+            <a href="#" class="news-link">Read More →</a>
+          </div>
+        </div>
+        <div class="news-card reveal" style="--delay:0.1s">
+          <div class="news-img">
+            <img src="https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=600&q=80"
+              alt="Electric SUVs" loading="lazy">
+          </div>
+          <div class="news-body">
+            <span class="news-date">Jan 15, 2024</span>
+            <h3>Preparation for Mahindra's electric SUVs in Nepal</h3>
+            <a href="#" class="news-link">Read More →</a>
+          </div>
+        </div>
+        <div class="news-card reveal" style="--delay:0.2s">
+          <div class="news-img">
+            <img src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=600&q=80"
+              alt="30 Years" loading="lazy">
+          </div>
+          <div class="news-body">
+            <span class="news-date">Nov 12, 2023</span>
+            <h3>30 Years of Excellence in Automotive Operations</h3>
+            <a href="#" class="news-link">Read More →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CTA ========== -->
+  <section class="cta-section reveal">
+    <div class="cta-inner">
+      <div class="cta-orb cta-orb-1"></div>
+      <div class="cta-orb cta-orb-2"></div>
+      <span class="section-tag">Join Our Network</span>
+      <h2>Ready to Drive Nepal's Future With Us?</h2>
+      <p>Become part of Nepal's most trusted mobility ecosystem. Explore dealership opportunities or connect with our
+        team today.</p>
+      <div class="cta-buttons">
+        <button class="btn-primary btn-lg"
+          onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Become a Partner</button>
+        <a href="https://www.agnigroup.com.np" target="_blank" class="btn-ghost btn-lg">Visit Official Site</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CONTACT ========== -->
+  <section class="contact section" id="contact">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Get In Touch</span>
+        <h2 class="section-heading">We'd Love to Hear From You</h2>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info reveal-left">
+          <div class="cinfo-card">
+            <span class="cinfo-icon">📍</span>
+            <div>
+              <strong>Head Office</strong>
+              <p>Panipokhari, Kathmandu, Nepal</p>
+            </div>
+          </div>
+          <div class="cinfo-card">
+            <span class="cinfo-icon">📞</span>
+            <div>
+              <strong>Phone</strong>
+              <p>+977 1 4444444</p>
+            </div>
+          </div>
+          <div class="cinfo-card">
+            <span class="cinfo-icon">✉️</span>
+            <div>
+              <strong>Email</strong>
+              <p>info@agnigroup.com.np</p>
+            </div>
+          </div>
+          <div class="cinfo-card">
+            <span class="cinfo-icon">🏢</span>
+            <div>
+              <strong>Regional Offices</strong>
+              <p>Kohalpur · Birgunj · Itahari · Bhairahawa</p>
+            </div>
+          </div>
+        </div>
+        <form class="contact-form reveal-right" id="contactForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fname">Full Name</label>
+              <input type="text" id="fname" placeholder="Your full name" required>
+            </div>
+            <div class="form-group">
+              <label for="femail">Email</label>
+              <input type="email" id="femail" placeholder="your@email.com" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="fsubject">Subject</label>
+            <select id="fsubject">
+              <option>Vehicle Inquiry</option>
+              <option>Dealership Opportunity</option>
+              <option>After-Sales Service</option>
+              <option>Logistics Services</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="fmessage">Message</label>
+            <textarea id="fmessage" rows="4" placeholder="Tell us how we can help you..."></textarea>
+          </div>
+          <button type="submit" class="btn-primary btn-full">Send Message →</button>
+          <div class="form-success" id="formSuccess">✅ Message sent! We'll get back to you soon.</div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="nav-logo" href="#">
+            <span class="logo-fire">🔥</span>
+            <span class="logo-text">Agni <em>Group</em></span>
+          </a>
+          <p>One of Nepal's leading automotive-focused business groups. Authorized distributor of Mahindra since 1991.
+          </p>
+          <div class="footer-social">
+            <a href="#" aria-label="Facebook" class="social-btn">f</a>
+            <a href="#" aria-label="Twitter" class="social-btn">𝕏</a>
+            <a href="#" aria-label="Instagram" class="social-btn">◎</a>
+            <a href="#" aria-label="LinkedIn" class="social-btn">in</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#divisions">Our Divisions</a></li>
+            <li><a href="#timeline">Our Story</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Press Room</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Vehicles</h4>
+          <ul>
+            <li><a href="#">SUVs &amp; Pickups</a></li>
+            <li><a href="#">Commercial Vehicles</a></li>
+            <li><a href="#">Electric Vehicles</a></li>
+            <li><a href="#">Two-Wheelers</a></li>
+            <li><a href="#">Tractors</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#">After-Sales Service</a></li>
+            <li><a href="#">Spare Parts</a></li>
+            <li><a href="#">Logistics</a></li>
+            <li><a href="#">Energy Solutions</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© <span id="year"></span> Agni Group. All rights reserved. | Panipokhari, Kathmandu, Nepal</p>
+        <div class="footer-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Use</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
